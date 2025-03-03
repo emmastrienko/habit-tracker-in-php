@@ -1,7 +1,6 @@
 <nav id="menu" class="hidden">
     <ul>
-      <li>Home Page</li>
-      <li>About Site</li>
-      <li>Login</li>
+      <li><a href="#">Home Page</a></li>
+      <li><a href="#">About Site</a></li>
     </ul>
   </nav>

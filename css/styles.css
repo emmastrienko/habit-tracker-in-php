@@ -4,6 +4,11 @@
   box-sizing: border-box;
   font-family: "Moon Dance", cursive;
 }
+
+body {
+  background-color: #1a1a1a;
+}
+
 main {
   background: #1a1a1a;
   color: white;
@@ -24,7 +29,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .image-conteiner img {
@@ -78,11 +82,11 @@ main {
   }
 
   .image-conteiner img {
-    max-width: 100%; 
+    max-width: 100%;
   }
 
   #lifeRadarChart {
-   max-width: 100%;
+    max-width: 100%;
   }
 
   .todo-container {
@@ -90,7 +94,6 @@ main {
     max-width: 90%;
   }
 }
-
 
 header {
   background: #1a1a1a;
@@ -162,4 +165,62 @@ footer {
   width: 100%;
   padding: 15px;
   text-align: center;
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  position: absolute;
+  top: 90px;
+ 
+  border-radius: 10px;
+  text-align: center;
+}
+
+.about-container h1 {
+  font-size: 2em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.about-container p {
+  font-size: 1.3em;
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.about-container h2 {
+  font-size: 1.5em;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.about-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-container ul li {
+  font-size: 1.1em;
+  background: #252525;
+  color: #fff;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.about-container ul li::before {
+  content: "✔";
+  color: #af0404;
+  margin-right: 10px;
+  font-weight: bold;
 }

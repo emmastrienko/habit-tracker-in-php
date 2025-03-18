@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Moon Dance", cursive;
+  
 }
 
 body {
@@ -109,6 +109,11 @@ header {
 
 header h1 {
   padding: 5px;
+  font-family: "Moon Dance", cursive;
+}
+
+#menu {
+  z-index: 100;
 }
 
 #menu-toggle {
@@ -180,7 +185,6 @@ footer {
   padding: 20px;
   position: absolute;
   top: 90px;
- 
   border-radius: 10px;
   text-align: center;
 }
@@ -224,3 +228,82 @@ footer {
   margin-right: 10px;
   font-weight: bold;
 }
+
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 85px;
+  font-family: Arial, sans-serif ;
+}
+
+form {
+  background: #252525;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 500px;
+}
+.register h2 {
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+  font-size: 26px;
+}
+.register label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+.register input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 3px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #272727;
+  color: #fff;
+  font-size: 18px;
+}
+.register button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #af0404;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+.register button[type="submit"]:hover {
+  background-color: hsl(0, 96%, 45%);
+}
+
+.password-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; 
+}
+
+.password-container button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+

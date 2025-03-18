@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Moon+Dance&display=swap" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/script.js"></script>
 </head>
 <body>
   <header>
@@ -20,19 +21,4 @@
     <button id="menu-toggle">☰</button> 
   </header>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-        const menuToggle = document.getElementById("menu-toggle");
-        const menu = document.getElementById("menu");
 
-        menuToggle.addEventListener("click", function() {
-            menu.classList.toggle("show"); 
-        });
-
-        document.addEventListener("click", function(event) {
-            if (!menu.contains(event.target) && event.target !== menuToggle) {
-                menu.classList.remove("show");
-            }
-        });
-    });
-</script>

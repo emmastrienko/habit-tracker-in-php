@@ -33,8 +33,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     if (empty($errors)) {
-        header("Location: index.php?action=registration_successful");
-        exit();
+      
+        // З'єднання з базою даних
+        $conn = new mysqli("localhost", "root", "", "habit_tracker"); 
+    
+        // Перевірка з'єднання
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+    
+        // Захист від SQL-ін'єкцій + хешування пароля
+        $login = $conn->real_escape_string($login);
+        $email = $conn->real_escape_string($email);
+        $website = $conn->real_escape_string($website);
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+    
+        // Створення запиту
+        $sql = "INSERT INTO users (username, email, password, website) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $login, $email, $hashed_password, $website);
+    
+        if ($stmt->execute()) {
+            $stmt->close();
+            $conn->close();
+            header("Location: index.php?action=registration_successful");
+            exit();
+        } else {
+            $errors['general'] = "Something went wrong: " . $stmt->error;
+            $stmt->close();
+            $conn->close();
+        }
+    
     }
 }
 ?>

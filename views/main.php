@@ -1,3 +1,32 @@
+<?php
+require_once './config/db.php';
+
+$defaultGoals = [
+    "Be Proactive",
+    "Begin with the End in Mind",
+    "Put First Things First",
+    "Think Win-Win",
+    "Seek First to Understand, Then to Be Understood",
+    "Synergize",
+    "Sharpen the Saw"
+];
+
+$userGoals = $defaultGoals;
+
+if (!empty($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+    // Припустимо, у таблиці goals зберігаються цілі користувача у вигляді тексту (goal_text)
+    // і є поле user_id
+    $stmt = $conn->prepare("SELECT text FROM goals WHERE user_id = ?");
+    $stmt->execute([$user_id]);
+    $userGoals = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    // Якщо цілей немає, залишаємо дефолтні
+    if (!$userGoals) {
+        $userGoals = $defaultGoals;
+    }
+}
+?>
 <main>
   <div class="conteiner">
     <div class="image-conteiner">
@@ -9,13 +38,9 @@
     
     <div class="todo-container">
         <ul id="todo-list">
-            <li onclick="toggleComplete(this)">Be Proactive</li>
-            <li onclick="toggleComplete(this)">Begin with the End in Mind</li>
-            <li onclick="toggleComplete(this)">Put First Things First</li>
-            <li onclick="toggleComplete(this)">Think Win-Win</li>
-            <li onclick="toggleComplete(this)">Seek First to Understand, Then to Be Understood</li>
-            <li onclick="toggleComplete(this)">Synergize</li>
-            <li onclick="toggleComplete(this)">Sharpen the Saw</li>
+            <?php foreach ($userGoals as $goal): ?>
+                <li onclick="toggleComplete(this)"><?= htmlspecialchars($goal) ?></li>
+            <?php endforeach; ?>
         </ul>
     </div>
   </div>
